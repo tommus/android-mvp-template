@@ -32,7 +32,7 @@ Application layers is injected using the following facade:
 - ***PersistenceModule*** is exposed for later use within `DomainModule`;
 - ***NetworkModule*** is exposed for later use within `DomainModule`;
 - ***DomainModule*** is exposed as ***singleton*** scoped component for later use within `ApplicationModule` / `PresentationModule`;
-- ***PresentationModule*** is exposed for later use withing `ApplicationComponent`;
+- ***PresentationModule*** is exposed for later use within `ApplicationComponent`;
 - ***ApplicationComponent*** is exposed as ***application*** scoped component that depends on `DomainComponent`.
 
 `DomainComponent` was implemented as ***dependant*** component. Being said, only exposed (via component interface) 
