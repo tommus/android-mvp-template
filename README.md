@@ -13,7 +13,7 @@ This application targets Android (5.0) Lollipop and newer.
 
 ## Capabilities
 
-1. Application is split into four layers. All implemented in separate modules described below;
+1. Application is split into few layers. All implemented in separate modules described below;
 2. ***Application*** module (layer) produces `.apk` artifact;
 3. ***Domain*** module (layer) that is publicly visible to application layer - implements business logic;
 4. ***Network*** exposes networking to domain sub-layer and effectively hides it from application layer;
