@@ -1,0 +1,98 @@
+//region Startup Plugins
+
+apply plugin: "com.android.library"
+apply plugin: "kotlin-android"
+apply plugin: "kotlin-kapt"
+
+//endregion
+
+//region Android
+
+android {
+
+  //region Compile
+
+  compileSdkVersion deps.build_versions.compile_sdk
+
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
+
+  //endregion
+
+  //region Default Config
+
+  defaultConfig {
+    minSdkVersion deps.build_versions.min_sdk
+    targetSdkVersion deps.build_versions.target_sdk
+    versionCode 1
+    versionName "1.0"
+    dimension "irrelevant"
+  }
+
+  //endregion
+
+  //region Flavor Dimensions
+
+  flavorDimensions "irrelevant"
+
+  //endregion
+
+  //region Build Types
+
+  buildTypes {
+    debug {
+      useProguard false
+      minifyEnabled false
+    }
+    release {
+      useProguard true
+      minifyEnabled true
+      proguardFiles getDefaultProguardFile("proguard-android.txt"),
+          rootProject.file("settings/proguard/proguard-rules.pro")
+    }
+  }
+
+  //endregion
+
+  //region Gradle Properties
+
+  // TODO:
+
+  //endregion
+
+  //region Product Flavors
+
+  productFlavors {
+    dev {
+      // TODO:
+    }
+    prod {
+      // TODO:
+    }
+  }
+
+  //endregion
+}
+
+//endregion
+
+//region Dependencies
+
+dependencies {
+
+  //region Annotation Processors
+
+  // TODO:
+
+  //endregion
+
+  //region Application Files
+
+  implementation fileTree(dir: "libs", include: ["*.jar"])
+
+  //endregion
+}
+
+//endregion
