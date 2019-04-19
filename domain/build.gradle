@@ -84,7 +84,8 @@ dependencies {
 
   //region Annotation Processors
 
-  // TODO:
+  kapt deps.dagger.compiler
+  kapt deps.dagger.android_processor
 
   //endregion
 
@@ -99,6 +100,12 @@ dependencies {
   api project(":utility")
   implementation project(":network")
   implementation project(":persistence")
+
+  //endregion
+
+  //region Dependency Injection
+
+  compileOnly deps.dagger.annotation
 
   //endregion
 }

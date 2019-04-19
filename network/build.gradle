@@ -84,13 +84,26 @@ dependencies {
 
   //region Annotation Processors
 
-  // TODO:
+  kapt deps.dagger.compiler
+  kapt deps.dagger.android_processor
 
   //endregion
 
   //region Application Files
 
   implementation fileTree(dir: "libs", include: ["*.jar"])
+
+  //endregion
+
+  //region Application Modules
+
+  implementation project(":utility")
+
+  //endregion
+
+  //region Dependency Injection
+
+  compileOnly deps.dagger.annotation
 
   //endregion
 }

@@ -2,6 +2,7 @@
 
 apply plugin: "com.android.application"
 apply plugin: "kotlin-android"
+apply plugin: "kotlin-android-extensions"
 apply plugin: "kotlin-kapt"
 
 //endregion
@@ -83,6 +84,13 @@ android {
 
 dependencies {
 
+  //region Annotation Processors
+
+  kapt deps.dagger.compiler
+  kapt deps.dagger.android_processor
+
+  //endregion
+
   //region Application Files
 
   implementation fileTree(dir: "libs", include: ["*.jar"])
@@ -102,9 +110,9 @@ dependencies {
 
   //endregion
 
-  //region Kotlin
+  //region Dependency Injection
 
-  implementation deps.kotlin.stdlib_jdk8
+  compileOnly deps.dagger.annotation
 
   //endregion
 
