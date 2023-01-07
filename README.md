@@ -32,7 +32,7 @@ change only few default values:
 - `projectName` - \"`TemplateApplication`\";
 - module package - \"`windly.template`\";
 - theme base name - \"`Theme.Template`\";
-- style base name = \"`Template`\";
+- style base name - \"`Template`\";
 
 > Consider searching for `template` phrase with disabled "match case" feature.
 
