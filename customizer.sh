@@ -29,7 +29,7 @@ for n in $(find . -type d \( -path '*/src/main' \) )
 do
   mkdir -p $n/java/$SUBDIR
   mv $n/java/$ORG_SUBDIR/* $n/java/$SUBDIR
-  rm -rf mv $n/java/dev
+  rm -rf mv $n/java/windly
 done
 
 # Rename packages and imports in kotlin files.
