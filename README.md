@@ -51,7 +51,7 @@ For example, if you'd like to customize the project to use the following:
 Execute the script as below:
 
 ```shell
-sh customizer.sh dev.windly.solar Solar
+bash customizer.sh dev.windly.solar Solar
 ```
 
 As a result, the customizer shell script will change:
