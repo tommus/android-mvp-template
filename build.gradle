@@ -1,32 +1,33 @@
-//region Build Script
+import windly.template.ci.Build
+import windly.template.ci.Libs
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 buildscript {
   repositories {
-    apply from: "versions.gradle"
-    addRepos(repositories)
+    google()
+    mavenCentral()
   }
   dependencies {
-    classpath deps.build.android_gradle_plugin
-    classpath deps.build.kotlin_gradle_plugin
+    classpath Libs.Android.gradlePlugin
+    classpath Libs.Androidx.Navigation.gradlePlugin
+    classpath Libs.Dagger.gradlePlugin
+    classpath Libs.Google.Services.gradlePlugin
+    classpath Libs.Kotlin.gradlePlugin
+    classpath Libs.Windly.Versioning.gradlePlugin
   }
 }
 
-//endregion
+subprojects {
 
-//region All Projects
+  tasks.withType(KotlinCompile).configureEach {
+    kotlinOptions {
 
-allprojects {
-  repositories {
-    addRepos(repositories)
+      // Configure JVM target.
+      jvmTarget = Build.Version.kotlin
+    }
   }
 }
-
-//endregion
-
-//region Tasks
 
 task clean(type: Delete) {
   delete rootProject.buildDir
 }
-
-//endregion

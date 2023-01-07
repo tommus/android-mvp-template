@@ -1,9 +1,0 @@
-//region Includes
-
-include ":application"
-include ":domain"
-include ":network"
-include ":persistence"
-include ":utility"
-
-//endregion

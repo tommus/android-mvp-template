@@ -2,16 +2,8 @@
 
 <resources>
 
-  <eat-comment/>
+  <eat-comment />
 
-  <!-- region Application -->
-
-  <style name="TemplateTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
-    <item name="colorPrimary">@color/colorPrimary</item>
-    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-    <item name="colorAccent">@color/colorAccent</item>
-  </style>
-
-  <!-- endregion -->
+  <style name="Template" />
 
 </resources>

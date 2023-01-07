@@ -1,60 +1,42 @@
-# Android Kotlin Template
+# Android Kotlin MVP Template
 
 ## Purpose
 
-This project is a base template for most of my Kotlin-driven Android applications.
-
-Rather than recreating and configuring again and again I have decided to prepare template that is easily configurable
-and mostly prepared.
+A base template for MVP-driven Kotlin-powered Android applications.
 
 ## Compatibility
 
-This application targets Android (5.0) Lollipop and newer.
+This template assumes the lowest supported Android version is 8.1 Oreo.
 
-## Capabilities
+## Project Modules
 
-1. Application is split into few layers. All implemented in separate modules described below;
-2. ***Application*** module (layer) produces `.apk` artifact;
-3. ***Domain*** module (layer) that is publicly visible to application layer - implements business logic;
-4. ***Network*** exposes networking to domain sub-layer and effectively hides it from application layer;
-5. ***Persistence*** exposes database and settings to domain sub-layer and hides it from application layer;  
-6. ***Utility*** implements various utility / device-related tools;
-7. Dependencies and server uris are listed withing`versions.properties` file;
-8. Mapping between layer models should be done using Model Mapper library.
+Template consists of the following modules:
 
-## Dependency Injection
-
-***Dagger*** is configured as dependency injection tool. 
-
-Application layers is injected using the following facade:
-
-- ***UtilityModule*** is exposed to higher-level layers;
-- ***PersistenceModule*** is exposed for later use within `DomainModule`;
-- ***NetworkModule*** is exposed for later use within `DomainModule`;
-- ***DomainModule*** is exposed as ***singleton*** scoped component for later use within `ApplicationModule` / `PresentationModule`;
-- ***PresentationModule*** is exposed for later use within `ApplicationComponent`;
-- ***ApplicationComponent*** is exposed as ***application*** scoped component that depends on `DomainComponent`.
-
-`DomainComponent` was implemented as ***dependant*** component. Being said, only exposed (via component interface) 
-dependencies will be available from `ApplicationComponent` and it's modules.
-
-This way, the ***network*** and ***persistence*** layer is completely hidden from ***application*** perspective (no
-explicit `api` dependencies are present in respective `build.gradle` files).
-
-In result, ***application*** layer might be considered ***data source agnostic*** (it does not even know where the data
-comes from - it is just there) making an implementation of ***Single-Source-Of-Truth*** way easier.
+1. **application** - the main application module. Produces the `.apk` file.
+2. **base** - exposes programming language specific extensions.
+3. **base-android** - contains Android specific classes and utilities.
+4. **base-mvp** - implements simple Model-View-Presenter framework.
+5. **common-network** - exposes networking dependencies.
+6. **common-persistence** - exposes persistence dependencies.
+7. **configuration** - exposes application configuration via `Configuration`
+   class. All those fields are gathered from `gradle.properties` file in this
+   module.
+8. **resources** - accessible (and optionally injectable) application resources.
 
 ## Hint
 
-To simplify kick-starting new project and adapt to your needs - you have to change only few default values:
+To simplify kick-starting new project and adapt to your needs - you have to
+change only few default values:
 
-- application name - \"`Template`\";
-- module package - \"`co.windly.template`\";
-- theme base name - \"`TemplateTheme`\".
+- `packageName` - \"`windly.template`\";
+- `projectName` - \"`TemplateApplication`\";
+- module package - \"`windly.template`\";
+- theme base name - \"`Theme.Template`\";
+- style base name = \"`Template`\";
 
 > Consider searching for `template` phrase with disabled "match case" feature.
 
 ## Template Generation
 
-Pull Request with Yeoman generator that simplifies generation of the project with configurable name/package is more 
-than greatly appreciated. :)
+Pull Request with Yeoman generator that simplifies generation of the project
+with configurable name/package is more than greatly appreciated. :)
