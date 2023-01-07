@@ -38,6 +38,10 @@ find ./ -type f -name "*.kt" -exec sed -i.bak "s/package $ORG_PACKAGE/package $P
 find ./ -type f -name "*.kt" -exec sed -i.bak "s/import $ORG_PACKAGE/import $PACKAGE/g" {} \;
 find ./ -type f -name "Application.kt" -exec sed -i.bak "s/$ORG_PACKAGE/$PACKAGE/g" {} \;
 
+# Rename packages in manifest files.
+echo "Renaming packages in manifest files to $PACKAGE..."
+find ./ -type f -name "AndroidManifest.xml" -exec sed -i.bak "s/$ORG_PACKAGE/$PACKAGE/g" {} \;
+
 # Rename imports in gradle files.
 echo "Renaming imports in gradle files to $PACKAGE..."
 find ./ -type f -name "*.gradle" -exec sed -i.bak "s/import $ORG_PACKAGE/import $PACKAGE/g" {} \;
