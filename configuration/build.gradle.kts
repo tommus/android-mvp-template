@@ -15,6 +15,8 @@ object Key {
 
 android {
 
+  namespace = "windly.template.configuration"
+
   buildTypes {
     debug {
       isMinifyEnabled = false

@@ -11,6 +11,8 @@ plugins {
 
 android {
 
+  namespace = "windly.template.common.network"
+
   buildFeatures {
     buildConfig = false
   }

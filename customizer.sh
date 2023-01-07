@@ -1,8 +1,7 @@
 #!/usr/local/bin/bash
 
 # Verify bash version. MacOS comes with bash 3 preinstalled.
-if [[ ${BASH_VERSINFO[0]} -lt 4 ]]
-then
+if [[ ${BASH_VERSINFO[0]} -lt 4 ]]; then
   echo "You need at least bash 4 to run this script."
   exit 1
 fi
@@ -11,22 +10,21 @@ fi
 set -e
 
 if [[ $# -lt 2 ]]; then
-   echo "Usage: bash customizer.sh my.new.package [ApplicationName]" >&2
-   exit 2
+  echo "Usage: bash customizer.sh my.new.package [ApplicationName]" >&2
+  exit 2
 fi
 
 PACKAGE=$1
-APPNAME=$2
+APP_NAME=$2
 SUBDIR=${PACKAGE//.//} # Replaces . with /
 
 ORG_PACKAGE="windly.template"
-ORG_APPNAME="TemplateApplication"
+ORG_APP_NAME="TemplateApplication"
 ORG_SUBDIR=${ORG_PACKAGE//.//} # Replaces . with /
 
 # Reorganize packages and files.
 echo "Moving $n/java/$ORG_SUBDIR to $n/java/$SUBDIR..."
-for n in $(find . -type d \( -path '*/src/main' \) )
-do
+for n in $(find . -type d \( -path '*/src/main' \)); do
   mkdir -p $n/java/$SUBDIR
   mv $n/java/$ORG_SUBDIR/* $n/java/$SUBDIR
   rm -rf mv $n/java/windly
@@ -47,17 +45,26 @@ echo "Renaming imports in gradle files to $PACKAGE..."
 find ./ -type f -name "*.gradle" -exec sed -i.bak "s/import $ORG_PACKAGE/import $PACKAGE/g" {} \;
 find ./ -type f -name "*.kts" -exec sed -i.bak "s/$ORG_PACKAGE/$PACKAGE/g" {} \;
 
+# Rename styles.
+echo "Renaming base styles to $APP_NAME..."
+find ./ -type f -name "styles.xml" -exec sed -i.bak "s/Template/$APP_NAME/g" {} \;
+
+# Rename themes.
+echo "Renaming base themes to $APP_NAME..."
+find ./ -type f -name "themes.xml" -exec sed -i.bak "s/Theme.Template/Theme.$APP_NAME/g" {} \;
+find ./ -type f -name "AndroidManifest.xml" -exec sed -i.bak "s/Theme.Template/Theme.$APP_NAME/g" {} \;
+
 echo "Cleaning up..."
 find . -name "*.bak" -type f -delete
 
 # Rename app.
-if [[ $APPNAME ]]
-then
-    echo "Renaming app to $APPNAME..."
-    find ./ -type f \( -name "$ORG_APPNAME.kt" -or -name "settings.gradle.kts" -or -name "*.xml" -or -name "Application.kt" \) \
-      -exec sed -i.bak "s/$ORG_APPNAME/$APPNAME/g" {} \;
-    find ./ -name "$ORG_APPNAME.kt" | sed "p;s/$ORG_APPNAME/$APPNAME/" | tr '\n' '\0' | xargs -0 -n 2 mv
-    find . -name "*.bak" -type f -delete
+if [[ $APP_NAME ]]; then
+  echo "Renaming app to $APP_NAME..."
+  find ./ -type f -name "$ORG_APP_NAME.kt" -exec sed -i.bak "s/$ORG_APP_NAME/${APP_NAME}Application/g" {} \;
+  find ./ -type f -name "*.xml" -exec sed -i.bak "s/$ORG_APP_NAME/${APP_NAME}Application/g" {} \;
+  find ./ -type f -name "Application.kt" -exec sed -i.bak "s/$ORG_APP_NAME/$APP_NAME/g" {} \;
+  find ./ -name "$ORG_APP_NAME.kt" | sed "p;s/$ORG_APP_NAME/${APP_NAME}Application/" | tr '\n' '\0' | xargs -0 -n 2 mv
+  find . -name "*.bak" -type f -delete
 fi
 
 # Remove additional files.

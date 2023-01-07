@@ -11,6 +11,8 @@ plugins {
 
 android {
 
+  namespace = "windly.template.common.persistence"
+
   buildFeatures {
     buildConfig = false
   }

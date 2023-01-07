@@ -10,6 +10,8 @@ plugins {
 
 android {
 
+  namespace = "windly.template.resources"
+
   buildFeatures {
     buildConfig = false
   }

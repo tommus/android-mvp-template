@@ -5,14 +5,14 @@ import org.gradle.api.JavaVersion
 object Build {
 
   object Android {
-    const val compileSdk = 31
+    const val compileSdk = 32
     const val minSdk = 27
-    const val targetSdk = 31
+    const val targetSdk = 32
   }
 
   object Version {
     val java = JavaVersion.VERSION_11
-    const val kotlin = "1.8"
+    const val kotlin = "11"
   }
 
   object Variant {

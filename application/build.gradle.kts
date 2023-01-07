@@ -24,6 +24,8 @@ plugins {
 
 android {
 
+  namespace = "windly.template"
+
   buildFeatures {
     dataBinding = true
   }

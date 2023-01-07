@@ -94,7 +94,7 @@ object Libs {
 
   object Windly {
     object Limbo {
-      const val utility = "co.windly:limbo-utility:3.2.2"
+      const val utility = "co.windly:limbo-utility:3.2.1"
     }
     object Versioning {
       const val gradlePlugin = "co.windly:versioning-gradle-plugin:1.1.2"

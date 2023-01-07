@@ -11,6 +11,8 @@ plugins {
 
 android {
 
+  namespace = "windly.template.base.android"
+
   compileOptions {
     sourceCompatibility = Version.java
     targetCompatibility = Version.java
