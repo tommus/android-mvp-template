@@ -3,34 +3,27 @@
 <manifest
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:tools="http://schemas.android.com/tools"
-  package="co.windly.template">
-
-  <!-- region Application -->
+  package="windly.template">
 
   <application
-    android:name="co.windly.template.application.MvvmApplication"
+    android:name="windly.template.windly.template.application.TemplateApplication"
     android:allowBackup="true"
     android:icon="@mipmap/ic_launcher"
     android:label="@string/app_name"
     android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
-    android:theme="@style/TemplateTheme"
+    android:theme="@style/Theme.Template"
     tools:ignore="AllowBackup,GoogleAppIndexingWarning">
 
-    <!-- region Activity -->
-
     <activity
-      android:name="co.windly.template.presentation.main.MainActivity">
+      android:name="windly.template.windly.template.presentation.main.MainActivity"
+      android:exported="true">
       <intent-filter>
-        <action android:name="android.intent.action.MAIN"/>
-        <category android:name="android.intent.category.LAUNCHER"/>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
 
-    <!-- endregion -->
-
   </application>
-
-  <!-- endregion -->
 
 </manifest>
