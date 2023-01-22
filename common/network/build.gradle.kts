@@ -1,9 +1,9 @@
 @file:Suppress("UnstableApiUsage")
 
-import Build_gradle.Key.URL
 import windly.template.ci.Application.packageName
 import windly.template.ci.Build.Android
 import windly.template.ci.Build.Version
+import windly.template.ci.Proguard.CONSUMER
 
 plugins {
   id("com.android.library")
@@ -11,27 +11,12 @@ plugins {
   kotlin("kapt")
 }
 
-object Key {
-  const val URL = "URL"
-}
-
 android {
 
-  namespace = "$packageName.configuration"
+  namespace = "$packageName.network"
 
-  buildTypes {
-    debug {
-      isMinifyEnabled = false
-
-      // TODO: Add injectable configuration.
-      buildConfigField("String", URL, findProperty("ApiUrlDebug").toString())
-    }
-    release {
-      isMinifyEnabled = false
-
-      // TODO: Add injectable configuration.
-      buildConfigField("String", URL, findProperty("ApiUrlRelease").toString())
-    }
+  buildFeatures {
+    buildConfig = false
   }
 
   compileOptions {
@@ -41,13 +26,24 @@ android {
   compileSdk = Android.compileSdk
 
   defaultConfig {
+    consumerProguardFiles(CONSUMER)
     minSdk = Android.minSdk
   }
 }
 
 dependencies {
 
-  implementation(project(":base:android"))
+  implementation(project(":base:language"))
+  implementation(project(":configuration"))
+
   implementation(libs.hilt.android)
   kapt(libs.hilt.compiler)
+
+  implementation(libs.network.moshi)
+  kapt(libs.network.moshi.codegen)
+
+  api(libs.network.retrofit)
+  api(libs.network.retrofit.moshi)
+  api(libs.network.retrofit.rxjava3)
+  implementation(libs.network.okhttp.logging)
 }

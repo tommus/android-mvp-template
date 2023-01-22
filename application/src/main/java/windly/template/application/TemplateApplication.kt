@@ -2,7 +2,7 @@ package windly.template.application
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
-import windly.template.lifecycle.RunOnStartup
+import windly.template.android.lifecycle.RunOnStartup
 import javax.inject.Inject
 
 @HiltAndroidApp

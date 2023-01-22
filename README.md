@@ -32,11 +32,32 @@ change only few default values:
 - `projectName` - \"`TemplateApplication`\";
 - module package - \"`windly.template`\";
 - theme base name - \"`Theme.Template`\";
-- style base name = \"`Template`\";
+- style base name - \"`Template`\";
 
 > Consider searching for `template` phrase with disabled "match case" feature.
 
-## Template Generation
+## Customizer shell script
 
-Pull Request with Yeoman generator that simplifies generation of the project
-with configurable name/package is more than greatly appreciated. :)
+Instead of manually customizing the project, you can also consider using the
+`customizer.sh` shell script.
+
+> Usage: bash customizer.sh my.new.package [ApplicationName]
+
+For example, if you'd like to customize the project to use the following:
+
+- package: dev.windly.solar
+- application name: Solar
+
+Execute the script as below:
+
+```shell
+bash customizer.sh dev.windly.solar Solar
+```
+
+As a result, the customizer shell script will change:
+
+- root package name of all the modules 
+- application name
+- base style and theme names
+
+So, more or less - the project will be kicked off. :)

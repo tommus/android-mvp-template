@@ -1,11 +1,11 @@
 @file:Suppress("UnstableApiUsage")
 
 include(":application")
-include(":base")
-include(":base-android")
-include(":base-mvp")
-include(":common-network")
-include(":common-persistence")
+include(":base:android")
+include(":base:language")
+include(":base:mvp")
+include(":common:network")
+include(":common:persistence")
 include(":configuration")
 include(":resources")
 

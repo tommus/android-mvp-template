@@ -1,3 +1,5 @@
+@file:Suppress("UnstableApiUsage")
+
 import com.android.build.gradle.ProguardFiles.ProguardFile.OPTIMIZE
 import windly.template.ci.Application.Debug.packageSuffix
 import windly.template.ci.Application.Debug.versionSuffix
@@ -7,8 +9,6 @@ import windly.template.ci.Application.releaseAppName
 import windly.template.ci.Build.Android
 import windly.template.ci.Build.Variant.DEBUG
 import windly.template.ci.Build.Version
-import windly.template.ci.Keystore
-import windly.template.ci.Libs
 import windly.template.ci.Proguard.rules
 import windly.template.tasks.PrintVersionTask
 
@@ -23,6 +23,8 @@ plugins {
 }
 
 android {
+
+  namespace = packageName
 
   buildFeatures {
     dataBinding = true
@@ -70,24 +72,22 @@ android {
 
 dependencies {
 
-  implementation(project(":base"))
-  implementation(project(":base-android"))
-  implementation(project(":base-mvp"))
+  implementation(project(":base:android"))
+  implementation(project(":base:language"))
+  implementation(project(":base:mvp"))
   implementation(project(":configuration"))
   implementation(project(":resources"))
 
-  implementation(Libs.Androidx.constraintLayout)
+  implementation(libs.androidx.constraintlayout)
 
-  implementation(Libs.Dagger.hilt)
-  kapt(Libs.Dagger.compiler)
+  implementation(libs.hilt.android)
+  kapt(libs.hilt.compiler)
 
-  implementation(Libs.Android.material)
-
-  implementation(Libs.Windly.Limbo.utility)
+  implementation(libs.google.material)
 }
 
-tasks.register<windly.template.tasks.PrintVersionTask>(
-  name = "printVersionData",
+tasks.register<PrintVersionTask>(
+  name = PrintVersionTask.NAME,
   versioning.versionCode(),
   versioning.versionName()
 )
