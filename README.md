@@ -12,16 +12,17 @@ This template assumes the lowest supported Android version is 8.1 Oreo.
 
 Template consists of the following modules:
 
-1. **application** - the main application module. Produces the `.apk` file.
-2. **base** - exposes programming language specific extensions.
-3. **base-android** - contains Android specific classes and utilities.
-4. **base-mvp** - implements simple Model-View-Presenter framework.
-5. **common-network** - exposes networking dependencies.
-6. **common-persistence** - exposes persistence dependencies.
-7. **configuration** - exposes application configuration via `Configuration`
+1. **:application** - the main application module. Produces the `.apk` file.
+3. **:base:android** - contains Android specific classes and utilities.
+2. **:base:language** - exposes programming language specific extensions.
+4. **:base:mvp** - implements simple Model-View-Presenter framework.
+5. **:common:network** - exposes networking dependencies.
+6. **:common:persistence** - exposes persistence dependencies.
+7. **:configuration** - exposes application configuration via `Configuration`
    class. All those fields are gathered from `gradle.properties` file in this
    module.
-8. **resources** - accessible (and optionally injectable) application resources.
+8. **:resources** - accessible (and optionally injectable) application
+   resources.
 
 ## Hint
 
@@ -56,7 +57,7 @@ bash customizer.sh dev.windly.solar Solar
 
 As a result, the customizer shell script will change:
 
-- root package name of all the modules 
+- root package name of all the modules
 - application name
 - base style and theme names
 
