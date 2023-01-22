@@ -9,6 +9,10 @@ abstract class PrintVersionTask @Inject constructor(
   private val versionName: String
 ) : DefaultTask() {
 
+  companion object {
+    const val NAME = "printVersionData"
+  }
+
   @TaskAction
   fun print() {
     println()

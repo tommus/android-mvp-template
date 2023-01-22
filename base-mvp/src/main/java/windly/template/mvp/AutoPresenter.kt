@@ -4,7 +4,7 @@ import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.Lifecycle.State
 import androidx.lifecycle.LifecycleOwner
-import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxjava3.disposables.CompositeDisposable
 import java.lang.ref.WeakReference
 
 abstract class AutoPresenter<V : MvpLifecycleView> : Presenter<V>(),

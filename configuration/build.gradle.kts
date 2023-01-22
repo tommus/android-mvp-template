@@ -1,7 +1,9 @@
+@file:Suppress("UnstableApiUsage")
+
 import Build_gradle.Key.URL
+import windly.template.ci.Application.packageName
 import windly.template.ci.Build.Android
 import windly.template.ci.Build.Version
-import windly.template.ci.Libs
 
 plugins {
   id("com.android.library")
@@ -15,7 +17,7 @@ object Key {
 
 android {
 
-  namespace = "windly.template.configuration"
+  namespace = "$packageName.configuration"
 
   buildTypes {
     debug {
@@ -46,6 +48,6 @@ android {
 dependencies {
   implementation(project(":base-android"))
 
-  implementation(Libs.Dagger.hilt)
-  kapt(Libs.Dagger.compiler)
+  implementation(libs.hilt.android)
+  kapt(libs.hilt.compiler)
 }

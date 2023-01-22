@@ -1,7 +1,7 @@
+import windly.template.ci.Application.packageName
 import windly.template.ci.Build.Android
 import windly.template.ci.Build.Version
-import windly.template.ci.Libs
-import windly.template.ci.Proguard
+import windly.template.ci.Proguard.CONSUMER
 
 plugins {
   id("com.android.library")
@@ -11,7 +11,7 @@ plugins {
 
 android {
 
-  namespace = "windly.template.base.android"
+  namespace = "$packageName.base.android"
 
   compileOptions {
     sourceCompatibility = Version.java
@@ -20,7 +20,7 @@ android {
   compileSdk = Android.compileSdk
 
   defaultConfig {
-    consumerProguardFiles(windly.template.ci.Proguard.CONSUMER)
+    consumerProguardFiles(CONSUMER)
     minSdk = Android.minSdk
   }
 }
@@ -30,11 +30,12 @@ dependencies {
   implementation(project(":base"))
   implementation(project(":resources"))
 
-  implementation(Libs.Dagger.hilt)
-  kapt(Libs.Dagger.compiler)
+  implementation(libs.hilt.android)
+  kapt(libs.hilt.compiler)
 
-  api(Libs.Debug.timber)
+  implementation(libs.rx.android)
+  implementation(libs.rx.binding)
+  implementation(libs.rx.java)
 
-  implementation(Libs.Rx.android)
-  implementation(Libs.Rx.java)
+  api(libs.timber)
 }

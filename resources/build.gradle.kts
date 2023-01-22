@@ -1,6 +1,8 @@
+@file:Suppress("UnstableApiUsage")
+
+import windly.template.ci.Application.packageName
 import windly.template.ci.Build.Android
 import windly.template.ci.Build.Version
-import windly.template.ci.Libs
 
 plugins {
   id("com.android.library")
@@ -10,7 +12,7 @@ plugins {
 
 android {
 
-  namespace = "windly.template.resources"
+  namespace = "$packageName.resources"
 
   buildFeatures {
     buildConfig = false
@@ -24,7 +26,7 @@ android {
 }
 
 dependencies {
-  implementation(Libs.Android.material)
-  implementation(Libs.Dagger.hilt)
-  kapt(Libs.Dagger.compiler)
+  implementation(libs.google.material)
+  implementation(libs.hilt.android)
+  kapt(libs.hilt.compiler)
 }

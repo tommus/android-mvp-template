@@ -1,7 +1,9 @@
+@file:Suppress("UnstableApiUsage")
+
+import windly.template.ci.Application.packageName
 import windly.template.ci.Build.Android
 import windly.template.ci.Build.Version
-import windly.template.ci.Libs
-import windly.template.ci.Proguard
+import windly.template.ci.Proguard.CONSUMER
 
 plugins {
   id("com.android.library")
@@ -11,7 +13,7 @@ plugins {
 
 android {
 
-  namespace = "windly.template.common.network"
+  namespace = "$packageName.common.network"
 
   buildFeatures {
     buildConfig = false
@@ -24,7 +26,7 @@ android {
   compileSdk = Android.compileSdk
 
   defaultConfig {
-    consumerProguardFiles(windly.template.ci.Proguard.CONSUMER)
+    consumerProguardFiles(CONSUMER)
     minSdk = Android.minSdk
   }
 }
@@ -34,16 +36,14 @@ dependencies {
   implementation(project(":base"))
   implementation(project(":configuration"))
 
-  implementation(Libs.Dagger.hilt)
-  kapt(Libs.Dagger.compiler)
+  implementation(libs.hilt.android)
+  kapt(libs.hilt.compiler)
 
-  implementation(Libs.Json.Moshi.moshi)
-  kapt(Libs.Json.Moshi.codegen)
+  implementation(libs.network.moshi)
+  kapt(libs.network.moshi.codegen)
 
-  api(Libs.Network.Retrofit.moshi)
-  api(Libs.Network.Retrofit.retrofit)
-  api(Libs.Network.Retrofit.rxJava3)
-  implementation(Libs.Network.loggingInterceptor)
-
-  implementation(Libs.Windly.Limbo.utility)
+  api(libs.network.retrofit)
+  api(libs.network.retrofit.moshi)
+  api(libs.network.retrofit.rxjava3)
+  implementation(libs.network.okhttp.logging)
 }

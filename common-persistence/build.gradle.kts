@@ -1,7 +1,9 @@
+@file:Suppress("UnstableApiUsage")
+
+import windly.template.ci.Application.packageName
 import windly.template.ci.Build.Android
 import windly.template.ci.Build.Version
-import windly.template.ci.Libs
-import windly.template.ci.Proguard
+import windly.template.ci.Proguard.CONSUMER
 
 plugins {
   id("com.android.library")
@@ -11,7 +13,7 @@ plugins {
 
 android {
 
-  namespace = "windly.template.common.persistence"
+  namespace = "$packageName.common.persistence"
 
   buildFeatures {
     buildConfig = false
@@ -24,7 +26,7 @@ android {
   compileSdk = Android.compileSdk
 
   defaultConfig {
-    consumerProguardFiles(windly.template.ci.Proguard.CONSUMER)
+    consumerProguardFiles(CONSUMER)
     minSdk = Android.minSdk
   }
 }
@@ -33,13 +35,13 @@ dependencies {
 
   implementation(project(":base"))
 
-  api(Libs.Androidx.datastorePreferences)
+  api(libs.androidx.datastore.preferences)
 
-  api(Libs.Androidx.Room.runtime)
-  api(Libs.Androidx.Room.ktx)
-  api(Libs.Androidx.Room.rxJava3)
-  kapt(Libs.Androidx.Room.compiler)
+  api(libs.androidx.room.runtime)
+  api(libs.androidx.room.ktx)
+  api(libs.androidx.room.rxjava3)
+  kapt(libs.androidx.room.compiler)
 
-  implementation(Libs.Dagger.hilt)
-  kapt(Libs.Dagger.compiler)
+  implementation(libs.hilt.android)
+  kapt(libs.hilt.compiler)
 }

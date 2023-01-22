@@ -1,6 +1,6 @@
 package windly.template.mvp
 
-import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxjava3.disposables.CompositeDisposable
 
 abstract class BasePresenter<V : MvpView> : Presenter<V>() {
 

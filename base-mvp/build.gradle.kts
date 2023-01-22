@@ -1,7 +1,7 @@
+import windly.template.ci.Application.packageName
 import windly.template.ci.Build.Android
 import windly.template.ci.Build.Version
-import windly.template.ci.Libs
-import windly.template.ci.Proguard
+import windly.template.ci.Proguard.CONSUMER
 
 plugins {
   id("com.android.library")
@@ -10,7 +10,7 @@ plugins {
 
 android {
 
-  namespace = "windly.template.mvp"
+  namespace = "$packageName.mvp"
 
   compileOptions {
     sourceCompatibility = Version.java
@@ -19,13 +19,13 @@ android {
   compileSdk = Android.compileSdk
 
   defaultConfig {
-    consumerProguardFiles(windly.template.ci.Proguard.CONSUMER)
+    consumerProguardFiles(CONSUMER)
     minSdk = Android.minSdk
   }
 }
 
 dependencies {
-  implementation(Libs.Androidx.lifecycle)
-  implementation(Libs.Kotlin.stdJdk8)
-  implementation(Libs.Rx.java)
+  implementation(libs.androidx.lifecycle)
+  implementation(libs.kotlin.stdlib)
+  implementation(libs.rx.java)
 }
