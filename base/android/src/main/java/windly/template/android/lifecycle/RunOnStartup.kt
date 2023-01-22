@@ -1,4 +1,4 @@
-package windly.template.lifecycle
+package windly.template.android.lifecycle
 
 import javax.inject.Qualifier
 

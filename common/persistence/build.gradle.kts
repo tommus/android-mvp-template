@@ -13,7 +13,7 @@ plugins {
 
 android {
 
-  namespace = "$packageName.common.network"
+  namespace = "$packageName.persistence"
 
   buildFeatures {
     buildConfig = false
@@ -33,17 +33,14 @@ android {
 
 dependencies {
 
-  implementation(project(":base"))
-  implementation(project(":configuration"))
+  implementation(project(":base:language"))
+  api(libs.androidx.datastore.preferences)
+
+  api(libs.androidx.room.runtime)
+  api(libs.androidx.room.ktx)
+  api(libs.androidx.room.rxjava3)
+  kapt(libs.androidx.room.compiler)
 
   implementation(libs.hilt.android)
   kapt(libs.hilt.compiler)
-
-  implementation(libs.network.moshi)
-  kapt(libs.network.moshi.codegen)
-
-  api(libs.network.retrofit)
-  api(libs.network.retrofit.moshi)
-  api(libs.network.retrofit.rxjava3)
-  implementation(libs.network.okhttp.logging)
 }

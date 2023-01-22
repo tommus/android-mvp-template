@@ -1,4 +1,4 @@
-package windly.template.permission
+package windly.template.android.permission
 
 import android.content.Context
 import android.content.pm.PackageManager.PERMISSION_GRANTED

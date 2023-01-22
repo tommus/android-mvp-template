@@ -1,5 +1,3 @@
-@file:Suppress("UnstableApiUsage")
-
 import windly.template.ci.Application.packageName
 import windly.template.ci.Build.Android
 import windly.template.ci.Build.Version
@@ -13,11 +11,7 @@ plugins {
 
 android {
 
-  namespace = "$packageName.common.persistence"
-
-  buildFeatures {
-    buildConfig = false
-  }
+  namespace = "$packageName.android"
 
   compileOptions {
     sourceCompatibility = Version.java
@@ -33,15 +27,15 @@ android {
 
 dependencies {
 
-  implementation(project(":base"))
-
-  api(libs.androidx.datastore.preferences)
-
-  api(libs.androidx.room.runtime)
-  api(libs.androidx.room.ktx)
-  api(libs.androidx.room.rxjava3)
-  kapt(libs.androidx.room.compiler)
+  implementation(project(":base:language"))
+  implementation(project(":resources"))
 
   implementation(libs.hilt.android)
   kapt(libs.hilt.compiler)
+
+  implementation(libs.rx.android)
+  implementation(libs.rx.binding)
+  implementation(libs.rx.java)
+
+  api(libs.timber)
 }

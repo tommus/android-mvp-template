@@ -72,9 +72,9 @@ android {
 
 dependencies {
 
-  implementation(project(":base"))
-  implementation(project(":base-android"))
-  implementation(project(":base-mvp"))
+  implementation(project(":base:android"))
+  implementation(project(":base:language"))
+  implementation(project(":base:mvp"))
   implementation(project(":configuration"))
   implementation(project(":resources"))
 

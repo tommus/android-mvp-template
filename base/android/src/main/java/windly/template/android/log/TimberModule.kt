@@ -1,4 +1,4 @@
-package windly.template.log
+package windly.template.android.log
 
 import dagger.Module
 import dagger.Provides

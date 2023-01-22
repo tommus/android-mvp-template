@@ -5,7 +5,7 @@ import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import dagger.multibindings.IntoSet
-import windly.template.lifecycle.RunOnStartup
+import windly.template.android.lifecycle.RunOnStartup
 
 @[Module InstallIn(SingletonComponent::class)]
 abstract class StartupModule {

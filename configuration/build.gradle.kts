@@ -46,8 +46,8 @@ android {
 }
 
 dependencies {
-  implementation(project(":base-android"))
 
+  implementation(project(":base:android"))
   implementation(libs.hilt.android)
   kapt(libs.hilt.compiler)
 }

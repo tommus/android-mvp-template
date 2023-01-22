@@ -1,3 +1,5 @@
+@file:Suppress("UnstableApiUsage")
+
 import windly.template.ci.Application.packageName
 import windly.template.ci.Build.Android
 import windly.template.ci.Build.Version
@@ -11,7 +13,11 @@ plugins {
 
 android {
 
-  namespace = "$packageName.base.android"
+  namespace = "$packageName.network"
+
+  buildFeatures {
+    buildConfig = false
+  }
 
   compileOptions {
     sourceCompatibility = Version.java
@@ -27,15 +33,17 @@ android {
 
 dependencies {
 
-  implementation(project(":base"))
-  implementation(project(":resources"))
+  implementation(project(":base:language"))
+  implementation(project(":configuration"))
 
   implementation(libs.hilt.android)
   kapt(libs.hilt.compiler)
 
-  implementation(libs.rx.android)
-  implementation(libs.rx.binding)
-  implementation(libs.rx.java)
+  implementation(libs.network.moshi)
+  kapt(libs.network.moshi.codegen)
 
-  api(libs.timber)
+  api(libs.network.retrofit)
+  api(libs.network.retrofit.moshi)
+  api(libs.network.retrofit.rxjava3)
+  implementation(libs.network.okhttp.logging)
 }

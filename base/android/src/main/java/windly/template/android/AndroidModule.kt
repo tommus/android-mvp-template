@@ -1,4 +1,4 @@
-package windly.template
+package windly.template.android
 
 import dagger.Module
 import dagger.hilt.InstallIn
