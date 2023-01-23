@@ -60,5 +60,6 @@ As a result, the customizer shell script will change:
 - root package name of all the modules
 - application name
 - base style and theme names
+- package names in navigation graphs
 
 So, more or less - the project will be kicked off. :)
