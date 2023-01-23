@@ -25,8 +25,8 @@ androidx_room_rxjava3 = { module = "androidx.room:room-rxjava3", version.ref = "
 fastadapter = { module = "com.mikepenz:fastadapter", version.ref = "fastadapter" }
 fastadapter_binding = { module = "com.mikepenz:fastadapter-extensions-binding", version.ref = "fastadapter" }
 fastadapter_utils = { module = "com.mikepenz:fastadapter-extensions-utils", version.ref = "fastadapter" }
-google_services_gradle_plugin = { module = "com.google.gms:google-services", version.ref = "google_services" }
 google_material = { module = "com.google.android.material:material", version = "1.7.0" }
+google_services_gradle_plugin = { module = "com.google.gms:google-services", version.ref = "google_services" }
 hilt_android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
 hilt_compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt" }
 hilt_gradle_plugin = { module = "com.google.dagger:hilt-android-gradle-plugin", version.ref = "hilt" }

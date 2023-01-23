@@ -21,13 +21,14 @@ SUBDIR=${PACKAGE//.//} # Replaces . with /
 ORG_PACKAGE="windly.template"
 ORG_APP_NAME="TemplateApplication"
 ORG_SUBDIR=${ORG_PACKAGE//.//} # Replaces . with /
+ORG_TOPDIR=${ORG_PACKAGE%%.*}
 
 # Reorganize packages and files.
 echo "Moving $n/java/$ORG_SUBDIR to $n/java/$SUBDIR..."
 for n in $(find . -type d \( -path '*/src/main' \)); do
   mkdir -p $n/java/$SUBDIR
   mv $n/java/$ORG_SUBDIR/* $n/java/$SUBDIR
-  rm -rf mv $n/java/windly
+  rm -rf mv $n/java/ORG_TOPDIR
 done
 
 # Rename packages and imports in kotlin files.
